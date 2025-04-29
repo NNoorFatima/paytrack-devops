@@ -6,7 +6,10 @@ import { useEffect } from "react";
 import { Badge } from "../../components/badge";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE = process.env.REACT_APP_API_URL;
+
 const EmployeeProfilePage = () => {
+  console.log(API_BASE);
   const navigate = useNavigate();
   const [employee, setEmployee] = useState(null);
   const [user, setUser] = useState(null);
@@ -50,7 +53,8 @@ const EmployeeProfilePage = () => {
   // }, [userId]);
   useEffect(() => {
     // Fetch Employee Data
-    fetch(`http://localhost:8080/employees/${userId}`)
+    // fetch(`http://localhost:8080/employees/${userId}`)
+    fetch(`${API_BASE}/employees/${userId}`)
       .then((response) => {
         if (!response.ok) {
           return response.text().then((text) => {
@@ -65,7 +69,7 @@ const EmployeeProfilePage = () => {
         setEmployee(employeeData);
   
         // Fetch User Data after employee data is successfully fetched
-        return fetch(`http://localhost:8080/users/${userId}`).then((response) => {
+        return fetch(`${API_BASE}/users/${userId}`).then((response) => {
           if (!response.ok) {
             return response.text().then((text) => {
               console.error("Error fetching user data", text);
@@ -78,7 +82,7 @@ const EmployeeProfilePage = () => {
           setUser(userData);
   
           // Fetch Departments after user data is fetched
-          return fetch(`http://localhost:8080/department`);
+          return fetch(`${API_BASE}/department`);
         }).then((response) => {
           if (!response.ok) {
             return response.text().then((text) => {

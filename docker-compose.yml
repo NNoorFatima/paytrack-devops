@@ -1,0 +1,61 @@
+version: '3.8' #specifies the version of docker compose being used
+
+services:   #defines individual containers
+  backend:  #service name
+    build:
+      context: . #root of the whole project where the docker starts looking for files
+      dockerfile: docker/Dockerfile.backend #location of the dockerfile
+    container_name: paytrack-backend #name of the container -- optional --else it will use the service name
+    ports:  #ports to be exposed
+      - "8080:8080"
+    networks: #networks to be connected to
+      - paytrack-net
+    restart: unless-stopped #restart container automatically if it crashes
+    depends_on: #waits for mysql to start
+      mysql:
+        condition: service_healthy
+    environment: # Environment variables override application.properties
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/PayTrackDB
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 22639646410Aa
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  frontend:
+    build:
+      context: . #root of the whole project where the docker starts looking for files
+      dockerfile: docker/Dockerfile.frontend #location of the dockerfile
+    container_name: paytrack-frontend
+    ports:
+      - "3000:80" # Maps container port 80 (Nginx) to host port 3000
+    depends_on:
+      - backend
+        # condition: service_healthy
+    networks:
+      - paytrack-net
+    restart: unless-stopped
+
+  mysql: #adding mysql database
+    image: mysql:8.3 #mysql image version
+    container_name: paytrack-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 22639646410Aa
+      MYSQL_DATABASE: PayTrackDB
+    # ports:
+    #   - "3306:3306" # expose mysql port
+    volumes:
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - paytrack-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  paytrack-net: #defines a custom network for communication between frontend, backend, mysql
