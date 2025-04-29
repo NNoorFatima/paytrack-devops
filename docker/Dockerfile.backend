@@ -1,0 +1,15 @@
+#build stage 
+FROM maven:3.9.4-eclipse-temurin-17 AS build
+
+#set working directory 
+WORKDIR /app
+
+#copy dependencies
+COPY backend/pom.xml .
+RUN mvn dependency:go-offline
+
+#copy source code
+COPY backend/src ./src
+
+#build app
+RUN mvn clean package -DskipTests

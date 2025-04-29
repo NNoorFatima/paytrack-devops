@@ -1,0 +1,20 @@
+#build stage- uses node.js to build react app
+FROM node:20 AS build
+
+WORKDIR /app
+
+COPY frontend/package*.json ./
+RUN npm install
+
+COPY frontend/ .
+
+RUN npm run build
+
+# usisng nginx to serve the built files--# Use tiny Nginx image to serve the files
+FROM nginx:alpine   
+
+COPY --from=build /app/build /usr/share/nginx/html     
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
