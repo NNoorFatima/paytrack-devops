@@ -28,6 +28,8 @@ services:   #defines individual containers
     build:
       context: . #root of the whole project where the docker starts looking for files
       dockerfile: docker/Dockerfile.frontend #location of the dockerfile
+      args:
+        REACT_APP_API_URL: http://localhost:8080
     container_name: paytrack-frontend
     ports:
       - "3000:80" # Maps container port 80 (Nginx) to host port 3000

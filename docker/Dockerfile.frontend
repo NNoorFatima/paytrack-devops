@@ -10,6 +10,10 @@ RUN npm install
 # Copy frontend code
 COPY frontend/ .
 
+# Inject API URL (works during Docker build, not runtime)
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=${REACT_APP_API_URL}
+
 # Build the React production version
 RUN npm run build
 
