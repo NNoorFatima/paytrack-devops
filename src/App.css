@@ -1,0 +1,201 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Layout Styles */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  justify-content: space-between; /* Ensure content fills remaining space */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #1a1a2e;
+  color: #fff;
+  padding: 20px;
+  flex-shrink: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 2;
+}
+
+
+ /* Right Side Background Setup - Fully Dynamic */
+ .content-container {
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+  margin-left: 300px;
+  padding: 20px;
+  overflow: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+/* Dynamic background image setup */
+.content-container.dynamic-bg {
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size:95%;
+  background-blend-mode: multiply;
+  
+}
+
+.content-container.dynamic-bg {
+  transition: background-image 0.5s ease-in-out;
+}
+/* Ensure content remains visible on top */
+.content-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Header Styling */
+.header {
+  background-color: #fff;
+  padding: 20px;
+  border-bottom: 2px solid #000;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 3;
+}
+
+/* Button Styling */
+button {
+  display: block;
+  margin-left: auto; /* Pushes the button to the right */
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+ 
+  transition: 0.3s ease;
+  position: relative;
+  z-index: 3;
+  
+}
+
+button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  position: relative;
+  z-index: 3;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* Dropdown Styling */
+select {
+  padding: 10px;
+  border: 2px solid #000;
+  font-weight: bold;
+  color: #000;
+  background-color: #f2b611;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+}
+
+select:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Ensure content appears fully above sidebar */
+.content, h1, p, div {
+  position: relative;
+  z-index: 3;
+}
+
+
+
+/* General reusable content box styling */
+.content-box {
+  background-color: rgba(0, 0, 0, 0.2); /* Dark, subtle transparency */
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 50%;
+  text-indent:50px;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 50px;
+  backdrop-filter: blur(15px) brightness(1.1);
+  -webkit-backdrop-filter: blur(15px) brightness(1.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+  transition: 0.3s ease-in-out;
+}
+
+/* Optional hover effect for extra polish */
+.content-box:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px) brightness(1.2);
+}
+
+
+
+
+/* Typography tweaks */
+.content-box h1 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+/* Button styling, also reusable */
+.btn-primary {
+  background-color: #ffc107;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  align-self: center;
+  
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}

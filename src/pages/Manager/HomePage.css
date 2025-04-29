@@ -1,0 +1,102 @@
+/* Full-screen background */
+.dashboard-wrapper {
+    height: 100vh;
+    width: 100vw;
+    background: url("../../images/leavreq.jpeg") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.dashboard-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The frosted-glass panel that contains everything */
+.glass-panel {
+    height: 90vh;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    padding: 10px;
+}
+
+/* Sidebar + Main Content Layout */
+.dashboard-body {
+    display: flex;
+    flex: 1;
+    height: 100%;
+}
+
+/* Top navigation bar */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px 15px 0 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Main content */
+.main-area {
+    flex: 1;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0 0 15px 0;
+}
+
+/* Dashboard content */
+.content-section {
+    max-width: 600px;
+    text-align: center;
+    margin: auto;
+}
+
+.content-section h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-left: 10rem;
+}
+
+.content-section p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+
+/* .employees-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .employees-table th,
+  .employees-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .employees-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .employees-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  } */

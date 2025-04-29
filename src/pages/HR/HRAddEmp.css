@@ -1,0 +1,176 @@
+
+.add-emp-page {
+    max-width: 600px;
+    min-width: 450px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background:rgba(255, 255, 255, 0.081); 
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    /* ensure space for any fixed header */
+    padding-top: 4rem;
+    /* allow form to scroll within viewport */
+    max-height: calc(100vh - 4rem - 4rem);
+    overflow-y: auto;
+    right:-100px ;
+
+    padding-bottom: 8rem;
+  }
+  
+  .add-emp-page h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    color: #333;
+  }
+  
+  .add-emp-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* keep the Name input always visible */
+  .form-group:first-of-type {
+    /* position: sticky; */
+    top: 0;
+    background: rgba(255, 255, 255, 0.081); ;
+    padding-top: 0.5rem;
+    z-index: 10;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+  }
+  
+  .form-group textarea {
+    min-height: 4rem;
+    resize: vertical;
+  }
+  
+  .submit-button {
+    padding: 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background: #4f46e5;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(79,70,229,0.4);
+    transition: background 0.2s, transform 0.1s;
+  }
+  
+  .submit-button:disabled {
+    background: #a5b4fc;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  .submit-button:not(:disabled):hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+  }
+  
+  .form-message {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    background: #f3f4f6;
+    color: #111;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .add-emp-page h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    color: #333;
+  }
+  
+  .add-emp-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+  }
+  
+  .form-group textarea {
+    min-height: 4rem;
+    resize: vertical;
+  }
+  
+  .submit-button {
+    padding: 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    /* background: #ffdd00; */
+    background: #dfa507;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(14, 14, 15, 0.4);
+    transition: background 0.2s, transform 0.1s;
+  }
+  
+  .submit-button:disabled {
+    background: #a5b4fc;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  .submit-button:not(:disabled):hover {
+    background: #0f0f10;
+    transform: translateY(-1px);
+  }
+  
+  .form-message {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    background: #f3f4f6;
+    color: #111;
+    text-align: center;
+    font-size: 1rem;
+  }
+  

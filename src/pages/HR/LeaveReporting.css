@@ -1,0 +1,80 @@
+.leave-reporting-container {
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  .leave-reporting-heading {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  }
+  
+  .leave-reporting-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 8px;
+  }
+  
+  .leave-reporting-table th, .leave-reporting-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .leave-reporting-table th {
+    background-color: #e7b52e;
+    color: white;
+    font-size: 12px;
+  }
+  
+  .leave-reporting-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .leave-reporting-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .leave-reporting-table td {
+    font-size: 12px;
+    color: #333;
+  }
+  
+  .leave-reporting-table td:last-child {
+    font-weight: bold;
+  }
+  
+  .chart-container {
+    max-width: 800px;
+    margin: 0 auto 30px;
+  }
+  
+  @media (max-width: 768px) {
+    .leave-reporting-heading {
+      font-size: 28px;
+    }
+  
+    .leave-reporting-table {
+      font-size: 14px;
+    }
+  }
+
+  .chart-container {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .highlight-row {
+    background-color: rgba(255, 87, 51, 0.2);
+    font-weight: bold;
+  }

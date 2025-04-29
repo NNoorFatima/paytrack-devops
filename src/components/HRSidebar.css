@@ -1,0 +1,145 @@
+/* Container for the dashboard layout */
+.dashboard-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+    background: url("../images/leavreq.jpeg") no-repeat center center/cover;
+  }
+  
+  /* Frosted Glass Effect Container - Make the panel smaller */
+  .frosted-glass {
+    width: 90%;  /* Adjust this value to make it smaller */
+    height: 80%;  /* Adjust this value to make it smaller */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Top Navigation */
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px 15px 0 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 180px;
+    height: 93.80%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 20px;
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  
+  /* Remove bullets from the list */
+  .sidebar ul {
+    list-style: none;  /* Removes bullets */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  /* Sidebar button styles - Completely rounded buttons */
+  .sidebar ul li button {
+    display: flex;
+    align-items:center;
+    width: 100%;
+    padding: 10px 20px;  /* Increased padding for better appearance */
+    font-size: 0.9rem;  /* Reduced font size */
+    font-weight: 500;
+    border: 2px solid white; /* White border */
+    border-radius: 30px; /* Completely rounded corners */
+    background-color: transparent; /* Transparent background */
+    color: white; /* White text */
+    transition: all 0.3s ease;
+    text-align: left;
+    margin-bottom: 15px; /* Add space between buttons */
+  }
+  
+  /* Change color to yellow on hover */
+  .sidebar ul li button:hover {
+    background-color: rgb(238, 190, 2); /* Yellow background on hover */
+    color: black; /* Change text color to black on hover */
+    border-color: rgb(238, 190, 2); /* Yellow border on hover */
+  }
+  
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .nav-right .nav-link {
+    margin-left: 10px;
+    color: white; /* White text */
+    text-decoration: none;
+    padding: 10px 16px; /* Slightly larger padding for better interaction */
+    border-radius: 25px; /* More rounded corners */
+    background-color: transparent; /* Keep the initial background transparent */
+    font-weight: bold;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  /* Hover effect for Profile and Logout */
+  .nav-right .nav-link:hover {
+    background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Gradient background on hover */
+    color: white; /* Keep text color white */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow for more focus */
+    transform: scale(1.05); /* Slightly enlarge the button */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  /* Top Navigation - Making the background transparent */
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: transparent; /* Transparent background */
+    border-radius: 15px 15px 0 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Optional: a subtle border */
+  }
+  
+  /* Sidebar Title - Adding spacing and positioning */
+  .sidebar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  
+  /* 
+  .nav-left h2 {
+    margin: 0;
+    font-size: 0.5rem;
+  } */
+  
+  
+  
+  
+  

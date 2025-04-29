@@ -1,0 +1,48 @@
+/* Import the fonts in your main HTML file or at the top of your CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&display=swap');
+/* This CSS file is for the Employee Management section of the dashboard */
+
+.employees-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* aligns it towards the top */
+    min-height: 100vh;
+    padding-top: 80px; /* move the table slightly down from top */
+    font-family: 'Open Sans', sans-serif;  /* apply a clean sans-serif font */
+    color: #000;  /* choose a black text color */
+}
+
+.table-wrapper {
+    background: transparent;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 16px rgba(10, 10, 10, 0.2);
+    margin-top: 20px;
+    width: 110%;
+    max-width: 1200px;
+    overflow-y: auto; /* maintain scroll logic if table gets long */
+}
+
+.employees-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 300px;
+    /* font-family: 'Montserrat', sans-serif; Use a bolder font for table content */
+}
+
+.employees-table th {
+    background-color:rgb(222, 169, 8);
+    color: rgb(11, 11, 11);
+    font-weight: bold;
+    padding: 12px 15px;
+    text-align: left;
+    /* font-family: 'Montserrat', sans-serif; */
+}
+
+.employees-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #0b0b0b;
+
+    /* font-family: 'Open Sans', sans-serif; */
+}

@@ -1,0 +1,111 @@
+
+  form {
+    margin :0 0;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  button:hover {
+    background-color: #000;
+    color: #fff;
+  }
+  .leave-request-form-container {
+    background: rgba(86, 86, 86, 0.3); /* Light frosted glass effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px; /* 👈 Rounded corners */
+  padding: 30px; /* Optional: adds spacing inside */
+    /* border-radius: 8px; */
+    width: 150%;
+    margin-bottom: 10rem;
+    /* margin: 0 auto; */
+    text-align: left;
+  }
+  
+  .leave-request-form-container h2 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .leave-request-form-container label {
+    display: block;
+    margin: 8px 0;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  .leave-request-form-container select{
+    width: 99%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .leave-request-form-container input,
+  .leave-request-form-container textarea {
+    width: 96%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .leave-request-form-container .error {
+    color: red;
+    font-size: 0.9rem;
+  }
+  
+  .leave-request-form-container .success-message {
+    color: green;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  
+  .leave-request-form-container button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    background-color: #ffcc33;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    
+  }
+  
+  .leave-request-form-container button:hover {
+    background-color: #000000;
+  }
+
+  @media (max-width: 768px) {
+    form {
+      gap: 0.2px;
+    }
+    .leave-request-form-container input,
+    .leave-request-form-container textarea {
+      width: 90%;
+      padding: 6px;
+      margin-bottom: 8px;
+    }
+  }
+  
+  /* Media queries for even smaller screens */
+  @media (max-width: 480px) {
+    form {
+      gap: 0.1px;
+    }
+    .leave-request-form-container input,
+    .leave-request-form-container textarea {
+      width: 80%;
+      padding: 4px;
+      margin-bottom: 6px;
+    }
+
+    
+    
+  }
+  

@@ -1,0 +1,84 @@
+/* Form Container */
+.admin-form-container1 {
+    background-color: rgba(128, 128, 128, 0.5);    
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Adjusted width */
+    margin-left: 200px;
+    width: 500px;
+    text-align: center;
+    margin-bottom: 101px;
+  }
+  
+
+  
+  /* Label Styling */
+  label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #002b5c;
+    margin-bottom: 2px;
+    display: block;
+    text-align: left;
+    margin-top: 0px;
+  }
+  
+  /* Form Row for layout */
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: px;
+  }
+  
+  /* Form Column for input layout */
+  .form-column {
+    width: 48%;
+  }
+  
+  /* Full Width for the Address field */
+  .form-column.full-width {
+    width: 100%;
+  }
+  
+  .admin-form-body {
+    width: 480px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  /* Input Fields */
+  .admin-form-body input,
+  .admin-form-body select,
+  .admin-form-body textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 40px;
+    box-sizing: border-box;
+  }
+ .admin-form-body select{
+    background-color: #efb222;
+    color: rgb(252, 252, 252);
+ }
+
+  .admin-form-body button{
+    width: 100%;
+    padding: 10px;
+    background-color: #efb222;
+    color: rgb(252, 252, 252);
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+
+  .admin-form-body button:hover {
+    background-color: #000000;
+  }
+  

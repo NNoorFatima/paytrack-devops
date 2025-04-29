@@ -1,0 +1,124 @@
+/* Full-screen background */
+.login-container {
+    height: 100vh;
+    width: 100vw;
+    background: url("../../images/leavreq.jpeg") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login box */
+.wrapper {
+    width: 350px;
+    background: rgba(255, 255, 255, 0.1); /* Light frosted glass effect */
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 30px;
+}
+
+/* Login title */
+.wrapper h1 {
+  font-size: 35px;
+  text-align: center;
+}
+
+/* Input container */
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+}
+
+/* Input field */
+.input-box input {
+    width: 80%;
+    height: 20%;
+    background: transparent;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+}
+
+/* Placeholder color */
+.input-box input::placeholder {
+    color: #fff;
+}
+
+/* Input icons */
+.input-box .icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+}
+
+/* Remember me & forgot password */
+/* Proper alignment for "Remember Me" and "Forgot Password?" */
+.wrapper .remember-forget {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  /* Fix vertical alignment */
+    font-size: 14.5px;
+    margin: 10px 0 15px;  
+    padding: 0 5px; 
+    width: 100%;  
+}
+
+/* Checkbox styling */
+.remember-forget label {
+    color: #fff;  /* ✅ Ensures visibility against the frosted background */
+    display: flex;
+    align-items: center;
+    gap: 1px;  /* ✅ Proper spacing between checkbox and label */
+    cursor: pointer;
+}
+
+.remember-forget label input {
+    accent-color: #ffffff;  /* ✅ Golden color for checkbox */
+    width: 16px;
+    height: 16px;
+}
+
+
+/* Forgot password link */
+.remember-forget a {
+    color: #f6f6f6;  /* ✅ Golden color for better visibility */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: auto;  /* ✅ Push it to the right */
+}
+
+.remember-forget a:hover {
+    text-decoration: underline;
+}
+
+
+/* Login button */
+.wrapper button {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 700;
+}
+
+/* Spacer for proper spacing */
+.spacer {
+    height: 0px;
+}

@@ -1,0 +1,99 @@
+/* Global Container Styling */
+.view-hr-container {
+  /* min-height: 100vh; */
+  /* background: linear-gradient(to bottom right, #f3f4f6, #dbeafe, #ede9fe); */
+  background: rgb(255, 255, 255, 0.08); /* Light frosted glass effect */
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  padding: 100px;
+  width: 75%;
+  margin-left: 190px;
+  overflow-y: auto;
+  /* margin-top: 0px;; */
+  margin-bottom: 90px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.view-hr-title {
+  font-size: 2.5rem;
+  color: #4b4555;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+/* Grid Styling */
+.hr-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .hr-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* HR Card Styles */
+.hr-card {
+  background: linear-gradient(to bottom right, #ffffff, #efefef);
+  
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 16px rgba(109, 40, 217, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.hr-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(109, 40, 217, 0.25);
+}
+
+.hr-card h3 {
+  color: #46424c;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+
+.hr-card div {
+  color: #374151;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.hr-card a {
+  text-decoration: underline;
+  color: #2870ee;
+}
+
+.hr-card a:hover {
+  color: #4c1d95;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.badge {
+  display: inline-block;
+  background-color: #e24343d4;
+  font-size: 1.2rem;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,148 @@
+/* src/pages/LeaveApproval.css */
+
+.leave-approval-container {
+  max-width: 1000px;
+  margin-top: -50px;
+  padding: 2rem;
+  margin-left: 200px;
+  /* Remove internal scrollbar */
+  height: 80vh; 
+  /* overflow: -moz-scrollbars-vertical;  */
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.001);
+  -webkit-border-radius: 10px;
+  border-radius: 1px;
+}
+
+
+.tab-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.tab-buttons button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.tab-buttons button.active-tab {
+  background-color: #ffcc00;
+  font-weight: bold;
+}
+
+.leave-requests-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 2rem;
+  background:transparent;
+  /* backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); */
+  padding: 10px;
+  margin-bottom: 100px;
+}
+
+.leave-request-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 8px;
+  padding: 1rem;
+  width:250px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  display: grid;
+  text-wrap: pretty;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+}
+
+.leave-request-card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.leave-request-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.leave-request-card p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #444;
+}
+
+.leave-request-card p strong {
+  font-weight: bold;
+}
+
+.leave-request-card p i {
+  font-style: italic;
+  color: #050505;
+}
+
+.leave-request-card p span {
+  font-weight: bold;
+}
+
+.leave-request-card .status {
+  font-weight: 700;
+}
+
+.leave-request-card .comments {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.leave-request-card .reason {
+  color: #666;
+}
+
+.leave-request-card .leave-date {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  border-radius: 20px;
+  text-align: center;
+  text-transform: capitalize;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.badge.approved {
+  background-color:forestgreen;
+  color: white;
+}
+
+.badge.pending {
+  background-color:deepskyblue;
+  color: black;
+}
+
+.badge.rejected {
+  background-color: #e53e3e; /* Red */
+  color: white;
+}

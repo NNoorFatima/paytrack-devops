@@ -1,0 +1,59 @@
+/* Profile.css */
+.Profile-section {
+  /* background: transparent; */
+  background: rgba(86, 86, 86, 0.1); /* Light frosted glass effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 40px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 600px;
+  min-width: 500px;
+  margin-left: 100px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+
+}
+
+.profile-heading {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+}
+
+.profile-subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.profile-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.profile-item {
+  background: transparent;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+
+/* Center the title text */
+.profile-title {
+    text-align: center;
+    margin-left: 170px;
+
+    margin-top: -200px;    /* move up by 10px */
+    margin-bottom: 20px;  /* optional spacing below */
+  }
+  
+
+  .Profile-section {
+    position: relative;
+    top: 0px;           /* shift entire section up */
+  }
+  

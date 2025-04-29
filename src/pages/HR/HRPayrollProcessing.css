@@ -1,0 +1,111 @@
+.payroll-form-container2 {
+    background: rgba(255, 255, 255, 0.081); 
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin-top: 50px;
+    text-align: center;
+    margin-left: 260px;
+    margin-bottom: 270px;
+  }
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-header h1 {
+    margin-top: 80px;
+    font-size: 24px;
+    color: #002b5c;
+    margin-bottom: 10px;
+  }
+  
+  .form-header h2 {
+    font-size: 18px;
+    color: #004080;
+    margin-bottom: 15px;
+  }
+
+  
+  .error-message {
+    color: #d9534f;
+    margin-top: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .admin-form-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .admin-form-body label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.875rem;
+    color: #333;
+  }
+
+  
+  .submit-btn2 {
+    padding: 0.75rem;
+    background: #090909;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  } 
+
+   .submit-btn2:disabled {
+    background: #7abaff;
+    cursor: not-allowed;
+  }
+  .submit-btn2:hover:not(:disabled) {
+    background: #101011;
+  }
+  
+
+  .results {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.081); ;
+    border-radius: 0.5rem;
+  }
+  .results p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #070808;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
+  .admin-form-body select,
+  .admin-form-body input[type="number"] {
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+  }
+  
+
+   */

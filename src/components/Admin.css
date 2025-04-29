@@ -1,0 +1,120 @@
+/* Container for the dashboard layout */
+.dashboard-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: url("../images/leavreq.jpeg") no-repeat center center/cover;
+}
+
+/* Frosted Glass Effect Container - Make the panel smaller */
+.frosted-glass {
+  width: 80%;  /* Adjust this value to make it smaller */
+  height: 90%;  /* Adjust this value to make it smaller */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Prevent content from overflowing the frosted-glass area */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 180px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  /* backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); */
+  padding: 20px;
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Adjusting Sidebar Button to fit the design better */
+.sidebar ul li button {
+  display: flex;
+  align-items:center;
+  width: 100%;
+  padding: 10px 20px;  
+  font-size: 0.9rem;  
+  font-weight: 500;
+  border: 2px solid white;
+  border-radius: 30px;
+  background-color: transparent;
+  color: white;
+  transition: all 0.3s ease;
+  text-align: left;
+  margin-bottom: 15px; 
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto; /* Allow content to scroll if necessary */
+  box-sizing: border-box;
+  height: calc(100vh - 40px); /* Adjust the main content height */
+}
+
+/* Top Navigation */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: transparent; 
+  border-radius: 15px 15px 0 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Right Navigation Link Styles */
+.nav-right .nav-link {
+  margin-left: 10px;
+  color: white;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 25px;
+  background-color: transparent;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.nav-right .nav-link:hover {
+  background: linear-gradient(45deg, #ff7e5f, #feb47b);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+/* Sidebar Title */
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Adjust content box within the frosted glass */
+.admin-content {
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.2); /* Ensure visibility of content */
+  border-radius: 10px;
+}
+
+
+
