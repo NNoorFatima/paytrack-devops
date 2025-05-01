@@ -1,0 +1,71 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: paytrack-ingress
+  namespace: paytrack
+  annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /$1  # Removes the prefix from the URL for backend requests
+    # nginx.ingress.kubernetes.io/rewrite-target: /
+
+spec:
+  ingressClassName: nginx 
+  rules:
+  - host: paytrack.local  # Local testing host
+    http:
+      paths:
+      - path: /employees/  # Match all paths under /employees
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 8080
+      - path: /admins/  # Match all paths under /admins
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 8080
+      - path: /managers/ # Match all paths under /managers
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 8080
+      - path: /hrs/  # Match all paths under /hrs
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 8080
+      - path: /department/ # Match all paths under /department
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 8080
+      - path: /leaves/  # Match all paths under /leaves
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 8080
+      - path: /users/  # Match all paths under /users
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 8080
+      - path: / # Catch-all for frontend routes
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80

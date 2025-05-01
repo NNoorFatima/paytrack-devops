@@ -39,7 +39,7 @@ metadata:
   name: mysql-pvc
   namespace: paytrack
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: mysql
   
@@ -47,4 +47,3 @@ spec:
     - protocol: TCP
       port: 3306
       targetPort: 3306
-      nodePort: 30002
