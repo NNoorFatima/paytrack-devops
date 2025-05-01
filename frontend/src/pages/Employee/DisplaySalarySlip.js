@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./salarySlip.css";
 import EmployeeLayout from "../../components/EmployeeLayout";
 
+const API_BASE = process.env.REACT_APP_API_URL;
 /**
  * Displays an employee’s monthly salary slip.
  * - pulls salary + leaves from the backend
@@ -25,14 +26,14 @@ const DisplaySalarySlips = ({ userId: incomingId }) => {
     (async () => {
       try {
         /* salary */
-        const empRes = await fetch(`http://localhost:8080/employees/${userId}`);
+        const empRes = await fetch(`${API_BASE}/employees/${userId}`);
         if (!empRes.ok) throw new Error("Employee not found");
         const emp = await empRes.json();
         setBaseSalary(emp.salary);
 
         /* approved leaves */
         const leaveRes = await fetch(
-          `http://localhost:8080/leaves/approved?userId=${userId}`
+          `${API_BASE}/leaves/approved?userId=${userId}`
         );
         if (!leaveRes.ok) throw new Error("Leaves data not found");
         const leaves   = await leaveRes.json();

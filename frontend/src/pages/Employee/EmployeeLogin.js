@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
 import "./LoginForm.css"; // Updated CSS for the frosted-glass effect
 
+const API_BASE = process.env.REACT_APP_API_URL;
 const EmployeeLogin = () => {
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const EmployeeLogin = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/employees/login", {
+      const response = await fetch(`${API_BASE}/employees/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

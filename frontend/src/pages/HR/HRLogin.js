@@ -5,7 +5,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 
 import "./LoginForm.css"; // Updated CSS for the frosted-glass effect
 
-
+const API_BASE = process.env.REACT_APP_API_URL;
 const HRLogin = () => {
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const HRLogin = () => {
     // alert("Login successful! Redirecting to admin Dashboard...");
     try {
       // Make an API call to check if the user exists and the password is correct
-      const response = await fetch("http://localhost:8080/hrs/login", {
+      const response = await fetch(`${API_BASE}/hrs/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

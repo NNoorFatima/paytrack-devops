@@ -3,6 +3,7 @@ import AdminLayout from "../../components/AdminLayout";
 import axios from "axios";
 import "./remove.css"; 
 
+const API_BASE = process.env.REACT_APP_API_URL;
 function RemoveManager() {
   return (
     <AdminLayout>
@@ -22,11 +23,11 @@ const RemoveManagerForm = () => {
   // Fetch manager list
   useEffect(() => {
     axios
-      .get("http://localhost:8080/managers")
+      .get(`${API_BASE}/managers`)
       .then((response) => {
         setManagers(response.data);
       // Fetch users after employees are fetched
-      return fetch("http://localhost:8080/users");
+      return fetch(`${API_BASE}/users`);
     })
     .then((res) => res.json())
     .then((userData) => {
@@ -49,10 +50,10 @@ const RemoveManagerForm = () => {
 
     try {
       // Step 1: Delete from manager table
-      await axios.delete(`http://localhost:8080/managers/${selectedManager}`);
+      await axios.delete(`${API_BASE}/managers/${selectedManager}`);
 
       // Step 2: Delete from user table
-      await axios.delete(`http://localhost:8080/users/${selectedManager}`);
+      await axios.delete(`${API_BASE}/users/${selectedManager}`);
 
       setMessage("Manager and associated User successfully removed.");
       // Refresh list after delete

@@ -3,17 +3,16 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell
 } from "recharts";
 import HRLayout from "../../components/HRLayout";
-
-
 import "./LeaveReporting.css";
 import axios from "axios";
+const API_BASE = process.env.REACT_APP_API_URL;
 
 const LeaveReporting = () => {
   const [reportData, setReportData] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/hrs/leave-counts")
+    axios.get(`${API_BASE}/hrs/leave-counts`)
       .then((response) => {
         setReportData(response.data); // Update the reportData state
       })

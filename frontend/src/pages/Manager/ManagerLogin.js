@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
 import "./LoginForm.css"; // Updated CSS for the frosted-glass effect
 
-
+const API_BASE = process.env.REACT_APP_API_URL;
 const ManagerLogin = () => {
   const navigate = useNavigate();
 
@@ -44,7 +44,7 @@ const ManagerLogin = () => {
     // alert("Login successful! Redirecting to Manager Dashboard...");
     try {
       // Make an API call to check if the user exists and the password is correct
-      const response = await fetch("http://localhost:8080/managers/login", {
+      const response = await fetch(`${API_BASE}/managers/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

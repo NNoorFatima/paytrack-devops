@@ -3,6 +3,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 import "./Login2.css"; // Import the CSS file for styling
 import { useNavigate } from "react-router-dom"; // To navigate after successful login
 
+const API_BASE = process.env.REACT_APP_API_URL;
 const AdminLogin = () => {
   const navigate = useNavigate(); // Initialize navigate function
 
@@ -21,7 +22,7 @@ const AdminLogin = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
 
-    const response = await fetch(`http://localhost:8080/admins/login?name=${formData.username}&password=${formData.password}`, {
+    const response = await fetch(`${API_BASE}/admins/login?name=${formData.username}&password=${formData.password}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",  // Optional for query params, but included for consistency

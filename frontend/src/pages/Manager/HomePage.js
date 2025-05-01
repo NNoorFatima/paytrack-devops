@@ -6,13 +6,11 @@ import "./EmployeeSection.css"; // custom styles here
 // import "./HomeSection.css";
 import "./LeaveRequestSection.css"; 
 // import "./Reports.css";
-
-
 import Home from "./Home.js"; 
 import Reports from "./Reports.js";
 import Profile from "./Profile.js";
 
-
+const API_BASE = process.env.REACT_APP_API_URL;
 
 const ManagerDashboard = () => {
   const [view, setView] = useState("home"); // Control the displayed content
@@ -48,7 +46,7 @@ const Employees = () => {
     const departmentId = localStorage.getItem("departmentId");
   
     if (departmentId) {
-      fetch(`http://localhost:8080/employees/users/department/${departmentId}`)
+      fetch(`${API_BASE}/employees/users/department/${departmentId}`)
         .then((res) => res.json())
         .then((data) => {
           console.log("Data fetched:", data);
@@ -109,7 +107,7 @@ const LeaveRequests = () => {
 
     if (departmentId) {
       fetch(
-        `http://localhost:8080/leaves/byDeptAndStatus?deptId=${departmentId}&status=${status}`
+        `${API_BASE}/leaves/byDeptAndStatus?deptId=${departmentId}&status=${status}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -139,7 +137,7 @@ const LeaveRequests = () => {
     const { leaveDetails } = selectedReport;
     try {
       const response = await fetch(
-        `http://localhost:8080/leaves/${leaveDetails.id}/status`,
+        `${API_BASE}/leaves/${leaveDetails.id}/status`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

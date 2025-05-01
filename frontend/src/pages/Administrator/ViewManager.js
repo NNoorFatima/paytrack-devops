@@ -3,6 +3,7 @@ import HRCard from "./CardAdmin";
 import AdminLayout from "../../components/AdminLayout";
 import "./CardAdmin.css"; // Link to the CSS
 
+const API_BASE  = process.env.REACT_APP_API_URL;
 const ViewManager = () => {
   const [hrData, setHrData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,7 +11,7 @@ const ViewManager = () => {
 
   useEffect(() => {
     // First fetch HR data from the backend API
-    fetch("http://localhost:8080/managers")
+    fetch(`${API_BASE}/managers`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch manager data");
@@ -22,7 +23,7 @@ const ViewManager = () => {
         const userIds = data.map((hr) => hr.userid).join(",");
 
         // Fetch user data based on HR `userid` values
-        fetch(`http://localhost:8080/users?userids=${userIds}`)
+        fetch(`${API_BASE}/users?userids=${userIds}`)
           .then((response) => {
             if (!response.ok) {
               throw new Error("Failed to fetch user data");

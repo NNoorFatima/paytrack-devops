@@ -5,6 +5,7 @@ import LeaveRequestCard from "../../components/LeaveRequestCard";
 import { Tabs, TabsList, TabsTrigger } from "../../components/tabs";
 import "./LeaveApproval.css";
 
+const API_BASE = process.env.REACT_APP_API_URL;
 const LeaveApproval = ({ userId = 1 }) => {
   const [leaveRequests, setLeaveRequests] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,7 +16,7 @@ const LeaveApproval = ({ userId = 1 }) => {
     try {
       setLoading(true);  // Set loading state before fetching data
       const response = await fetch(
-        `http://localhost:8080/leaves/allStatus?userId=${userId}&status=${status}`
+        `${API_BASE}/leaves/allStatus?userId=${userId}&status=${status}`
       );
       if (!response.ok) {
         throw new Error("Error fetching leave requests");

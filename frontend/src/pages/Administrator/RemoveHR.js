@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AdminLayout from "../../components/AdminLayout";
 import "./remove.css"; // Page-specific styles
 
+const API_BASE = process.env.REACT_APP_API_URL;
 function RemoveHR() {
   return (
     <AdminLayout>
@@ -21,13 +22,13 @@ const RemoveHRForm = () => {
 
   // Fetch HR data from backend
   const fetchHRs = () => {
-    fetch("http://localhost:8080/hrs")
+    fetch(`${API_BASE}/hrs`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Fetched HRs:", data);
         setHrList(data);
         console.log("HR List:", hrList);
-        return fetch("http://localhost:8080/users");
+        return fetch(`${API_BASE}/users`);
       })
       .then((res) => res.json())
       .then((userData) => {
@@ -48,7 +49,7 @@ const RemoveHRForm = () => {
     e.preventDefault();
     if (selectedHR) {
       setLoading(true);
-      fetch(`http://localhost:8080/hrs/${selectedHR}`, {
+      fetch(`${API_BASE}/hrs/${selectedHR}`, {
         method: "DELETE",
       })
         .then((res) => {

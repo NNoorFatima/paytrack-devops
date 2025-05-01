@@ -3,6 +3,7 @@ import AdminLayout from "../../components/AdminLayout";
 import axios from "axios";
 import "./addHR.css"; // You can rename this later to addManager.css if needed
 
+const API_BASE = process.env.REACT_APP_API_URL;
 function AddManager() {
   return (
     <AdminLayout>
@@ -33,7 +34,7 @@ const ManagerForm = () => {
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/department");
+        const response = await axios.get(`${API_BASE}/department`);
         setDepartments(response.data);
       } catch (err) {
         console.error("Error fetching departments:", err);
@@ -64,7 +65,7 @@ const ManagerForm = () => {
         date_of_join: formData.dateOfJoining,
       };
   
-      const userResponse = await axios.post("http://localhost:8080/users/create", userPayload);
+      const userResponse = await axios.post(`${API_BASE}/users/create`, userPayload);
   
       // Extract userId from backend response
       const userId = userResponse.data.userid;
@@ -78,7 +79,7 @@ const ManagerForm = () => {
         userid: userId,  // ✅ direct userid now!
         deptid: formData.deptId,
       };
-      await axios.post("http://localhost:8080/managers", managerPayload);
+      await axios.post(`${API_BASE}/managers`, managerPayload);
     
   
       alert("Manager successfully added!");

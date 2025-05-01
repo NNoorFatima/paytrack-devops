@@ -5,6 +5,7 @@ import "./HRAddEmp.css"; // Page-specific styles
 
 // at top of HRAddEmp.jsx
 import axios from "axios";
+const API_URL = process.env.REACT_APP_API_URL;
 
 
 function AddEmp() {
@@ -42,7 +43,7 @@ const AddEmployeeForm = () => {
     setMessage(null);
     try {
       // 1) Create the user
-      const userResponse = await fetch("/users/create", {
+      const userResponse = await fetch(`${API_URL}/users/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -60,7 +61,7 @@ const AddEmployeeForm = () => {
       const { userid } = await userResponse.json();
 
       // 2) Create the employee record
-      const empResponse = await fetch("/employees", {
+      const empResponse = await fetch(`${API_URL}/employees`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

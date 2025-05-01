@@ -2,7 +2,7 @@
 import React, { useState , useEffect }  from "react";
 import "./Reports.css"
 
-
+const API_BASE = process.env.REACT_APP_API_URL;
 const Reports = () => {
   const [departmentUsers, setDepartmentUsers] = useState([]);
   const [userId, setUserId] = useState("");
@@ -29,7 +29,7 @@ const Reports = () => {
   useEffect(() => {
     const departmentId = localStorage.getItem("departmentId");
     if (departmentId) {
-      fetch(`http://localhost:8080/employees/users/department/${departmentId}`)
+      fetch(`${API_BASE}/employees/users/department/${departmentId}`)
         .then((res) => res.json())
         .then((data) => setDepartmentUsers(data))
         .catch((err) => console.error("Failed to fetch users:", err));
@@ -43,7 +43,7 @@ const Reports = () => {
 
     if (userId && month && year) {
       const response = await fetch(
-        `http://localhost:8080/leaves/byUserAndMonthYear?userId=${userId}&month=${month}&year=${year}`
+        `${API_BASE}/leaves/byUserAndMonthYear?userId=${userId}&month=${month}&year=${year}`
       );
       if (response.status === 204) {
         setNoData(true);

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 
+const API_BASE = process.env.REACT_APP_API_URL;
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [employee, setEmployee] = useState(null);
@@ -11,7 +12,7 @@ const Profile = () => {
     if (!userId) return;
 
     // Fetch employee details first
-    fetch(`http://localhost:8080/managers/${userId}`)
+    fetch(`${API_BASE}/managers/${userId}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch employee data");
         return res.json();
@@ -20,7 +21,7 @@ const Profile = () => {
       .catch((err) => console.error(err));
 
     // Then fetch user profile
-    fetch(`http://localhost:8080/users/${userId}`)
+    fetch(`${API_BASE}/users/${userId}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch user data");
         return res.json();

@@ -3,6 +3,7 @@ import Layout from "../../components/EmployeeLayout";
 import "./changePassword.css";
 import { useLocation } from "react-router-dom";
 
+const API_BASE = process.env.REACT_APP_API_URL;
 const ChangePasswordPage = () => {
   const location = useLocation();
   const userId = location.state?.userId;
@@ -31,7 +32,7 @@ const ChangePasswordPage = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8080/users/${userId}/change-password`, {
+      const response = await fetch(`${API_BASE}/users/${userId}/change-password`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

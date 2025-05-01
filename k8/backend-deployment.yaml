@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-deployment
@@ -8,16 +8,32 @@ spec:
   selector:
     matchLabels:
       app: paytrack-backend
-    template:
-      metadata:
-        labels:
-          app: paytrack-backend
-      spec:
-        containers:
-          - name: paytrack-backend
-            image: <usernameof dockerhub>/imahename
-            ports:
-              - containerPort: 8080
+  template:
+    metadata:
+      labels:
+        app: paytrack-backend
+    spec:
+      containers:
+        - name: paytrack-backend
+          image: noor2205/paytrack-backend
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: paytrack-configmap
+                  key: DB_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef: 
+                  name: paytrack-configmap
+                  key: DB_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: paytrack-secrets
+                  key: mysql-root-password
 ---
 apiVersion: v1
 kind: Service
@@ -25,8 +41,10 @@ metadata:
   name: backend-service
   namespace: paytrack
 spec: 
+  type: NodePort
   selector:
     app: paytrack-backend
   ports:
     - port: 8080
       targetPort: 8080
+      nodePort: 30001

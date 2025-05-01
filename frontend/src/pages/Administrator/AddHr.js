@@ -3,6 +3,7 @@ import AdminLayout from "../../components/AdminLayout";
 import axios from "axios";
 import "./addHR.css";
 
+const API_BASE = process.env.REACT_APP_API_URL;
 function AddHR() {
   return (
     <AdminLayout>
@@ -33,7 +34,7 @@ const HRForm = () => {
   // Fetch department list
   useEffect(() => {
     axios
-      .get("http://localhost:8080/department")
+      .get(`${API_BASE}/department`)
       .then((response) => {
         setDepartments(response.data);
       })
@@ -59,7 +60,7 @@ const HRForm = () => {
 
     try {
       // Step 1: Create User (excluding deptId)
-      const userResponse = await axios.post("http://localhost:8080/users/create", {
+      const userResponse = await axios.post(`${API_BASE}/users/create`, {
         name: formData.fullName,
         password: formData.password,
         gender: formData.gender,
@@ -73,7 +74,7 @@ const HRForm = () => {
       const userId = userResponse.data.userid;
 
       // Step 2: Create HR entry with userid and deptId
-      await axios.post("http://localhost:8080/admins/hrs", {
+      await axios.post(`${API_BASE}/admins/hrs`, {
         userid: userId,
         deptid: parseInt(formData.deptId),
       });      

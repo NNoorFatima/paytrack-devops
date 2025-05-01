@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import HRLayout from "../../components/HRLayout";
 import "./remove.css"; // Page-specific styles
 
+const API_BASE = process.env.REACT_APP_API_URL;
 function RemoveEmp() {
   return (
     <HRLayout>
@@ -21,13 +22,13 @@ const RemoveEmpForm = () => {
 
   // Fetch HR data from backend
   const fetchEmployees = () => {
-    fetch("http://localhost:8080/employees")
+    fetch(`${API_BASE}/employees`)
       .then((res) => res.json())
       .then((empData) => {
         setEmpList(empData);
   
         // Fetch users after employees are fetched
-        return fetch("http://localhost:8080/users");
+        return fetch(`${API_BASE}/users`);
       })
       .then((res) => res.json())
       .then((userData) => {
@@ -50,7 +51,7 @@ const RemoveEmpForm = () => {
       setLoading(true);
   
       // Step 1: Delete Employee
-      fetch(`http://localhost:8080/employees/${selectedEmp}`, {
+      fetch(`${API_BASE}/employees/${selectedEmp}`, {
         method: "DELETE",
       })
         .then((res) => {
@@ -59,7 +60,7 @@ const RemoveEmpForm = () => {
           }
   
           // Step 2: Delete associated User
-          return fetch(`http://localhost:8080/users/${selectedEmp}`, {
+          return fetch(`${API_BASE}/users/${selectedEmp}`, {
             method: "DELETE",
           });
         })

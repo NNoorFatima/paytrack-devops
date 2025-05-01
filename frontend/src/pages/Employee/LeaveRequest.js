@@ -3,6 +3,8 @@ import Layout from "../../components/EmployeeLayout";
 import background from "../../images/leavreq.jpeg"; // Background image if you want to use it
 import "./LeaveRequest.css"; // Your custom CSS
 
+
+const API_BASE  = process.env.REACT_APP_API_URL;
 function LeaveRequest() {
   return (
     <Layout> 
@@ -63,7 +65,7 @@ const LeaveRequestForm = () => {
         };
         
      
-        fetch(`http://localhost:8080/leaves`, {
+        fetch(`${API_BASE}/leaves`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

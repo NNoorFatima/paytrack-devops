@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import HRLayout from "../../components/HRLayout";
 import "./HRPayrollProcessing.css"; // Page-specific styles
 
+const API_BASE  = process.env.REACT_APP_API_URL;
 function PayrollProcessing() {
   return (
     <HRLayout>
@@ -31,10 +32,10 @@ const PayrollProcessingForm = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const empRes = await fetch("http://localhost:8080/employees");
+        const empRes = await fetch(`${API_BASE}/employees`);
         const empData = await empRes.json();
         setEmpList(empData);
-        const userRes = await fetch("http://localhost:8080/users");
+        const userRes = await fetch(`${API_BASE}/users`);
         const userData = await userRes.json();
         setUserList(userData);
       } catch (err) {
@@ -58,7 +59,7 @@ const PayrollProcessingForm = () => {
 
     try {
       // 1) fetch employee details to get base salary and date_of_joining
-      const empRes = await fetch(`http://localhost:8080/employees/${selectedEmp}`);
+      const empRes = await fetch(`${API_BASE}/employees/${selectedEmp}`);
       if (!empRes.ok) throw new Error("Failed to fetch employee");
       const emp = await empRes.json();
       const salary = emp.salary;
@@ -66,7 +67,7 @@ const PayrollProcessingForm = () => {
       setBaseSalary(salary);
 
       // 2) fetch user data to get dateOfJoining
-      const userRes = await fetch(`http://localhost:8080/employees/${selectedEmp}/user`);
+      const userRes = await fetch(`${API_BASE}/employees/${selectedEmp}/user`);
       if (!userRes.ok) throw new Error("Failed to fetch user data");
       const user = await userRes.json();
       const doj = new Date(user.date_of_join);
@@ -94,7 +95,7 @@ const PayrollProcessingForm = () => {
 
       // 2) fetch leave count
       const leaveRes = await fetch(
-        `http://localhost:8080/leaves/byUserAndMonthYear/count?userId=${selectedEmp}&month=${month}&year=${year}`
+        `${API_BASE}/leaves/byUserAndMonthYear/count?userId=${selectedEmp}&month=${month}&year=${year}`
       );
       const count = leaveRes.status === 204 ? 0 : await leaveRes.json();
       setLeaveCount(count);
