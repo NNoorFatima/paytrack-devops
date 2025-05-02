@@ -34,7 +34,7 @@ const ManagerForm = () => {
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        const response = await axios.get(`${API_BASE}/department`);
+        const response = await axios.get(`${API_BASE}/department/`);
         setDepartments(response.data);
       } catch (err) {
         console.error("Error fetching departments:", err);
@@ -79,7 +79,7 @@ const ManagerForm = () => {
         userid: userId,  // ✅ direct userid now!
         deptid: formData.deptId,
       };
-      await axios.post(`${API_BASE}/managers`, managerPayload);
+      await axios.post(`${API_BASE}/managers/`, managerPayload);
     
   
       alert("Manager successfully added!");

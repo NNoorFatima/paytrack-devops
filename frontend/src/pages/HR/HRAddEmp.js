@@ -61,7 +61,7 @@ const AddEmployeeForm = () => {
       const { userid } = await userResponse.json();
 
       // 2) Create the employee record
-      const empResponse = await fetch(`${API_URL}/employees`, {
+      const empResponse = await fetch(`${API_URL}/employees/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

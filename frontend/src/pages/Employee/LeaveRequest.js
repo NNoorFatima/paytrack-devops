@@ -65,7 +65,7 @@ const LeaveRequestForm = () => {
         };
         
      
-        fetch(`${API_BASE}/leaves`, {
+        fetch(`${API_BASE}/leaves/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

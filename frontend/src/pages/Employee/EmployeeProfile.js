@@ -82,7 +82,7 @@ const EmployeeProfilePage = () => {
           setUser(userData);
   
           // Fetch Departments after user data is fetched
-          return fetch(`${API_BASE}/department`);
+          return fetch(`${API_BASE}/department/`);
         }).then((response) => {
           if (!response.ok) {
             return response.text().then((text) => {

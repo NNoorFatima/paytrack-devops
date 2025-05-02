@@ -23,11 +23,11 @@ const RemoveManagerForm = () => {
   // Fetch manager list
   useEffect(() => {
     axios
-      .get(`${API_BASE}/managers`)
+      .get(`${API_BASE}/managers/`)
       .then((response) => {
         setManagers(response.data);
       // Fetch users after employees are fetched
-      return fetch(`${API_BASE}/users`);
+      return fetch(`${API_BASE}/users/`);
     })
     .then((res) => res.json())
     .then((userData) => {

@@ -32,10 +32,10 @@ const PayrollProcessingForm = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const empRes = await fetch(`${API_BASE}/employees`);
+        const empRes = await fetch(`${API_BASE}/employees/`);
         const empData = await empRes.json();
         setEmpList(empData);
-        const userRes = await fetch(`${API_BASE}/users`);
+        const userRes = await fetch(`${API_BASE}/users/`);
         const userData = await userRes.json();
         setUserList(userData);
       } catch (err) {
