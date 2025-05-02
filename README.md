@@ -1,11 +1,10 @@
-# PayTrack - Leave and Payroll Management System
+# 🧾 PayTrack – Leave and Payroll Management System (Kubernetes & Docker Ready)
 
 ---
 
-### Developed by:
+### 👥 Developed by:
 - Noor Fatima  [NoorFatima123](https://github.com/NoorFatima123)
 - Sara Akbar  [Sara789](https://github.com/SaraAkbar16)
-- Abdul Munim [Munim456](https://github.com/Munimbaig024)
 
 ---
 
@@ -65,6 +64,8 @@ To develop a robust, user-friendly, efficient Leave and Payroll Management Syste
 
 - **Frontend:** ReactJS (with Axios, React Router DOM)
 - **Backend:** Spring Boot (Java 17+), MySQL
+- **Containerization:** Docker
+- **Orchestration & Routing:** Kubernetes + NGINX Ingress
 - **Version Control:** GitHub
 
 ---
@@ -73,137 +74,97 @@ To develop a robust, user-friendly, efficient Leave and Payroll Management Syste
 
 ### 📍 Backend (Spring Boot)
 
-1. **Install Java 17+**  
-   Download and set up Java Development Kit (JDK) 17 or above.
+1. **Install Java 17+**
+2. **Install MySQL** and create a database named `paytrack`.
+3. **Update `application.properties`:**
+spring.datasource.url=jdbc:mysql://localhost:3306/paytrack
+spring.datasource.username=YOUR_USERNAME
+spring.datasource.password=YOUR_PASSWORD
 
-2. **Install MySQL**  
-   - Create a database named `paytrack`.
-   - Update `application.properties`:
-     ```
-     spring.datasource.url=jdbc:mysql://localhost:3306/paytrack
-     spring.datasource.username=YOUR_USERNAME
-     spring.datasource.password=YOUR_PASSWORD
-     ```
-
-3. **Backend Setup Steps:**
-   ```bash
-   cd backend-directory
-   mvn clean install
-   mvn spring-boot:run
-   ```
-4. **Important Backend Dependencies:**
-   - Spring Web
-   - Spring Data JPA
-   - MySQL Driver
-   - Spring Security (optional)
-
-5. **Backend Structure:**
-   ```
-   /src/main/java/com/paytrack/
-      ├── controllers/
-      ├── services/
-      ├── repositories/
-      ├── models/
-      └── PayTrackApplication.java
-   ```
-
----
-
+4. **Run Backend:**
+```bash
+cd backend
+mvn clean install
+mvn spring-boot:run
+```
 ### 📍 Frontend (ReactJS)
 
-1. **Install Node.js and npm**  
-   Download Node.js from [nodejs.org](https://nodejs.org/).
+1. Install Node.js and npm  
+2. Create a `.env` file in the frontend directory:
+    ```bash
+    REACT_APP_API_URL=http://localhost:8080
+    ```
+3. Start frontend:
+    ```bash
+    cd frontend
+    npm install
+    npm start
+    ```
 
-2. **Frontend Setup Steps:**
-   ```bash
-   npx create-react-app paytrack-frontend
-   cd paytrack-frontend
-   npm install axios react-router-dom
-   npm start
-   ```
-
-3. **Frontend Structure:**
-   ```
-   /src/
-      ├── components/
-      ├── pages/
-      ├── services/
-      ├── layouts/
-      ├── App.js
-      └── index.js
-   ```
-
-4. **API Integration:**  
-   Use Axios to connect frontend to backend REST APIs.
-
----
-
-## 🧪 Testing Overview
-
-### 🖥️ Backend Testing:
-- **Frameworks Used:** JUnit, JaCoCo
-- **Coverage Achieved:**
-  - Statement Coverage: 77%
-  - Branch Coverage: 78%
-  - Major Services and Controllers well-tested.
-
-### 🖥️ Frontend Testing:
-- **Frameworks Used:** Jest (for component testing)
-- **Manual Testing:** Form submissions, API response checks.
-
----
-
-## 🗂️ Project Structure
-
-| Module | Main Functions |
-|:--|:--|
-| Employee Module | Leave application, salary view, profile management |
-| Manager Module | Approve/reject leave requests, view leave reports |
-| HR Module | Add/remove employees, generate payroll, manage policies |
-| Admin Module | Add/remove HR and Managers, system-wide controls |
-
----
-
-## 📦 Final Deliverables
-
-- Complete working project: backend + frontend
-- Blackbox and Whitebox Test Cases
-- Sprint Trello Board Screenshots
-- Burndown Chart
-- Full Project Documentation (PDF)
-- GitHub Repository
-
----
-
-## 🔥 Sample Test Cases (Blackbox Testing)
-
-| Test Case ID | Description | Input | Expected Result | Type | Status |
-|:--|:--|:--|:--|:--|:--|
-| TC01 | Login with valid credentials | Noor/n122 | Redirect to Profile | Equivalence Partitioning | Pass |
-| TC02 | Login with empty username | "", 123456 | Error | Equivalence Partitioning | Fail |
-| TC05 | Add employee with wrong email | noor.com | Error alert | Equivalence Partitioning | Fail |
-| TC07 | Generate payslip for valid employee | EmployeeID:123 | Payslip generated | Equivalence Partitioning | Pass |
-| TC08 | Generate payslip for invalid employee | EmployeeID:999 | Error: Not Found | Equivalence Partitioning | Fail |
-
-*(More detailed test cases are available in the project report.)*
-
-
-## 📚 Lessons Learned
-
-- Strong Git branching and version control enhances project coordination.
-- Dividing tasks based on strengths boosts overall quality.
-- Regular sprints and daily goals helped stay on track.
-- Early and thorough testing prevents major bugs later.
-- Clear documentation makes final delivery smoother.
-
----
-
-## 📬 Contact
-For any issues, questions, or collaboration requests, please reach out to the project contributors.
-
----
-
-# 🚀 Thank you for exploring PayTrack!
+3. Create a .env file with:
+```bash
+REACT_APP_API_URL=http://localhost:8080
 ```
+
+## 🐳 Docker Setup
+
+All Dockerfiles are located in the `/docker/` folder:
+
+
+```
+/docker/
+ |-- Dockerfile.frontend
+ |-- Dockerfile.backend
+```
+## ☸️ Kubernetes Deployment
+#### Create namespace
+```
+kubectl create namespace paytrack
+```
+#### Apply all YAMLS
+```
+kubectl apply -f k8/
+```
+#### Reset MySQL and Load SQL
+```
+kubectl delete pvc -n paytrack --all
+kubectl delete deployment mysql-deployment -n paytrack
+kubectl apply -f k8/mysql-deployment.yaml
+```
+#### Ingress Access
+Add to your /etc/hosts file 
+```
+127.0.0.1 paytrack.local
+```
+This will allow you to access the application at:
+```
+http://paytrack.local
+```
+##### Ingress Highlights
+1. Uses Prefix-based path routing
+2. CORS enabled via annotations
+3. Backend routes: **/employees**, **/hrs**, **/admins**, **/managers**, etc.
+4. Frontend catch-all: **/**  
+
+#### MySQL Init via ConfigMap
+SQL files go in **mysql-init/**. Create or update ConfigMap:
+```
+kubectl create configmap mysql-initdb-config --from-file=./mysql-init/ -n paytrack --dry-run=client -o yaml > k8/mysql-initdb-config.yaml
+
+kubectl apply -f k8/mysql-initdb-config.yaml
+```
+
+#### Login API Endpoints
+## 🔐 Login API Endpoints
+
+| Role     | Endpoint          | Method | Body Parameters                  |
+|----------|-------------------|--------|----------------------------------|
+| HR       | `/hrs/login`      | POST   | `email`, `password`              |
+| Employee | `/employees/login`| POST   | `email`, `password`              |
+| Admin    | `/admins/login`   | POST   | `email`, `password`              |
+| Manager  | `/managers/login` | POST   | `email`, `password`              |
+
+
+## 🚀 Thank you for exploring PayTrack!
 
 
