@@ -22,13 +22,13 @@ const RemoveHRForm = () => {
 
   // Fetch HR data from backend
   const fetchHRs = () => {
-    fetch(`${API_BASE}/hrs/`)
+    fetch(`${API_BASE}/hrs`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Fetched HRs:", data);
         setHrList(data);
         console.log("HR List:", hrList);
-        return fetch(`${API_BASE}/users/`);
+        return fetch(`${API_BASE}/users`);
       })
       .then((res) => res.json())
       .then((userData) => {

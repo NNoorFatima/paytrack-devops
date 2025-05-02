@@ -81,7 +81,7 @@ public class EmployeeController {
         return ResponseEntity.notFound().build();
     }
 
-   
+
     
     // GET /employees/users/department/{deptId} - Retrieve user data for employees in a specific department
     @GetMapping("/users/department/{deptId}")
@@ -130,10 +130,6 @@ public class EmployeeController {
     }
 
     
-
-
-
-
 
 }
 /*

@@ -34,7 +34,7 @@ const HRForm = () => {
   // Fetch department list
   useEffect(() => {
     axios
-      .get(`${API_BASE}/department/`)
+      .get(`${API_BASE}/department`)
       .then((response) => {
         setDepartments(response.data);
       })

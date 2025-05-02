@@ -22,13 +22,13 @@ const RemoveEmpForm = () => {
 
   // Fetch HR data from backend
   const fetchEmployees = () => {
-    fetch(`${API_BASE}/employees/`)
+    fetch(`${API_BASE}/employees`)
       .then((res) => res.json())
       .then((empData) => {
         setEmpList(empData);
   
         // Fetch users after employees are fetched
-        return fetch(`${API_BASE}/users/`);
+        return fetch(`${API_BASE}/users`);
       })
       .then((res) => res.json())
       .then((userData) => {

@@ -11,7 +11,7 @@ const ViewManager = () => {
 
   useEffect(() => {
     // First fetch HR data from the backend API
-    fetch(`${API_BASE}/managers/`)
+    fetch(`${API_BASE}/managers`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch manager data");

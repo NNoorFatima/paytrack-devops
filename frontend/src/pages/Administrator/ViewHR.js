@@ -11,7 +11,7 @@ const ViewHR = () => {
 
   useEffect(() => {
     // First fetch HR data from the backend API
-    fetch(`${API_BASE}/hrs/`)
+    fetch(`${API_BASE}/hrs`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch HR data");
