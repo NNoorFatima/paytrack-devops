@@ -4,68 +4,78 @@ metadata:
   name: paytrack-ingress
   namespace: paytrack
   annotations:
-    # nginx.ingress.kubernetes.io/rewrite-target: /$1  # Removes the prefix from the URL for backend requests
-    # nginx.ingress.kubernetes.io/rewrite-target: /
-
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS, DELETE, PATCH"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization"
 spec:
-  ingressClassName: nginx 
+  ingressClassName: nginx
   rules:
-  - host: paytrack.local  # Local testing host
-    http:
-      paths:
-      - path: /employees/  # Match all paths under /employees
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 8080
-      - path: /admins/  # Match all paths under /admins
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 8080
-      - path: /managers/ # Match all paths under /managers
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 8080
-      - path: /hrs/  # Match all paths under /hrs
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 8080
-      - path: /department/ # Match all paths under /department
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 8080
-      - path: /leaves/  # Match all paths under /leaves
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 8080
-      - path: /users/  # Match all paths under /users
-        pathType: Prefix
-        backend:
-          service:
-            name: backend-service
-            port:
-              number: 8080
-      - path: / # Catch-all for frontend routes
-        pathType: Prefix
-        backend:
-          service:
-            name: frontend-service
-            port:
-              number: 80
+    - host: paytrack.local
+      http:
+        paths:
+          # ✅ Backend routes
+          - path: /employees
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+
+          - path: /hrs
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+
+          - path: /admins
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+
+          - path: /managers
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+
+          - path: /users
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+
+          - path: /leaves
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+
+          - path: /department
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-service
+                port:
+                  number: 8080
+
+          # ✅ Frontend route (must come last)
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 80

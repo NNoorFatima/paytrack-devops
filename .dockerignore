@@ -1,7 +1,10 @@
-node_modules
+
 build
 .git
 .gitignore
-Dockerfile
 docker-compose.yml
 *.md
+Dockerfile*
+*.log
+frontend/node_modules
+backend/target
