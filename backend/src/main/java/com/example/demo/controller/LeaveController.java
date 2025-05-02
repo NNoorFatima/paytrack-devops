@@ -20,7 +20,7 @@ public class LeaveController {
     private LeaveService leaveService;
 
     // Retrieve all leaves
-    @GetMapping
+    @GetMapping({"", "/"})
     public List<Leave> getAllLeaves() {
         return leaveService.getAllLeaves();
     }

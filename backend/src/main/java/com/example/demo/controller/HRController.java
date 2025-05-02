@@ -38,7 +38,8 @@ public class HRController{
 
     // GET /hrs - Retrieve all HR records (user data is not included due to
     // @JsonIgnore)
-    @GetMapping
+    
+    @GetMapping({"", "/"})
     public List<HR> getAllHRs() {
         return hrService.getAllHRs();
     }

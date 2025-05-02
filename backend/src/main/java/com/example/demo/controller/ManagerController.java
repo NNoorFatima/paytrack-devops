@@ -26,7 +26,7 @@ public class ManagerController {
     private UserService userService;
 
     // GET /managers - Retrieve all managers (user data not included)
-    @GetMapping
+    @GetMapping({"", "/"})
     public List<Manager> getAllManagers() {
         return managerService.getAllManagers();
     }

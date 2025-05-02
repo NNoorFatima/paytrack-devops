@@ -28,7 +28,8 @@ public class EmployeeController {
 
 
     // GET /employees - Retrieve all employees
-    @GetMapping
+    // @GetMapping
+    @GetMapping({"", "/"})
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
     }

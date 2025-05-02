@@ -36,7 +36,8 @@ public class AdminController {
     private UserService userService;
 
     // --- Admin CRUD Operations ---
-    @GetMapping
+    // @GetMapping
+    @GetMapping({"", "/"})
     public ResponseEntity<List<Admin>> getAllAdmins() {
         return ResponseEntity.ok(adminService.getAllAdmins());
     }
