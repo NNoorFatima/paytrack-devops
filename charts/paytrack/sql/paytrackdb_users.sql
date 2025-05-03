@@ -43,7 +43,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Noor','n122','Female','noor.f@example.com','1234567890','G11, Islamabad, Pakistan','2025-03-19'),(2,'Sara','s123','Female','sara.a@example.com','911911911','G13, Islamabad, Pakistan','2020-01-01'),(3,'Sung Jinwoo','sj123','Male','sung.j@example.com','999999999','Korea','2009-01-01'),(4,'Munim','1080','Male','i221080@nu.edu.pk','1234','I10/4','2025-03-22'),(7,'hehe','hehe','Other','hehe@gmail.com','124','kk','2025-03-26'),(16,'Noor Fatima','123','Female','hehe@fsd','03209248293','House 614,G10/2,Sawan Road, G10 markaz\nHouse 614','2024-09-11'),(20,'Noor f','ssssss','Male','noor.2@gmail.com','66666','House 614,G10/2,Sawan Road, G10 markaz\nHouse 614','2025-05-01');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,3 +56,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2025-04-29 22:42:21
+INSERT INTO `users` VALUES (1,'Noor','n122','Female','noor.f@example.com','1234567890','G11, Islamabad, Pakistan','2025-03-19'),(2,'Sara','s123','Female','sara.a@example.com','911911911','G13, Islamabad, Pakistan','2020-01-01'),(3,'Sung Jinwoo','sj123','Male','sung.j@example.com','999999999','Korea','2009-01-01'),(4,'Munim','1080','Male','i221080@nu.edu.pk','1234','I10/4','2025-03-22'),(7,'hehe','hehe','Other','hehe@gmail.com','124','kk','2025-03-26'),(16,'Noor Fatima','123','Female','hehe@fsd','03209248293','House 614,G10/2,Sawan Road, G10 markaz\nHouse 614','2024-09-11'),(20,'Noor f','ssssss','Male','noor.2@gmail.com','66666','House 614,G10/2,Sawan Road, G10 markaz\nHouse 614','2025-05-01');

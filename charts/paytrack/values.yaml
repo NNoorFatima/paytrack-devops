@@ -16,7 +16,7 @@ mysql:
 
 ingress:
   enabled: true
-  host: paytrack.local
+  host: paytrack-helm.local
 
   backendPaths:
     - path: /employees
