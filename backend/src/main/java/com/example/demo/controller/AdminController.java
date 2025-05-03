@@ -137,8 +137,4 @@ public class AdminController {
             return "Invalid credentials or not an admin.";  // Plain text error response
         }
     }
-
-
-
-
 }
