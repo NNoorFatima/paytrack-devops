@@ -13,3 +13,16 @@ mysql:
   rootPassword: 22639646410Aa
   database: PayTrackDB
   user: root
+
+ingress:
+  enabled: true
+  host: paytrack.local
+
+  backendPaths:
+    - path: /employees
+    - path: /hrs
+    - path: /admins
+    - path: /managers
+    - path: /users
+    - path: /leaves
+    - path: /department
