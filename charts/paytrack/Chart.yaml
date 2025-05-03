@@ -1,0 +1,5 @@
+apiVersion: v2
+name: paytrack
+description: A Helm chart for the PayTrack Leave & Payroll System
+version: 0.1.0
+appVersion: "1.0"

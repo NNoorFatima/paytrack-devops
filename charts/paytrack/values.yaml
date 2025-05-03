@@ -1,0 +1,15 @@
+backend:
+  image:
+    repository: noor2205/paytrack-backend
+    tag: latest
+
+frontend:
+  image:
+    repository: noor2205/paytrack-frontend
+    tag: latest
+
+mysql:
+  image: mysql:8.3
+  rootPassword: 22639646410Aa
+  database: PayTrackDB
+  user: root
