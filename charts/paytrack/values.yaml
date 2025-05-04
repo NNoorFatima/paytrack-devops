@@ -1,12 +1,12 @@
 backend:
   image:
     repository: noor2205/paytrack-backend
-    tag: 1344537
+    tag: 7bc9d8e
 
 frontend:
   image:
     repository: noor2205/paytrack-frontend
-    tag: 1344537
+    tag: 7bc9d8e
 
 mysql:
   image: mysql:8.3

@@ -24,8 +24,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Get Short Commit ID
-        run: echo "COMMIT_ID=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+      - name: Get Short Commit ID (PowerShell-safe)
+        shell: powershell
+        run: |
+          $shortCommit = $env:GITHUB_SHA.Substring(0,7)
+          Add-Content -Path $env:GITHUB_ENV -Value "COMMIT_ID=$shortCommit"
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -34,23 +37,26 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build & Push Backend Image
+        shell: powershell
         run: |
-          docker build -t $BACKEND_IMAGE:$COMMIT_ID -f docker/Dockerfile.backend .
-          docker push $BACKEND_IMAGE:$COMMIT_ID
+          docker build -t "$env:BACKEND_IMAGE:$env:COMMIT_ID" -f docker/Dockerfile.backend .
+          docker push "$env:BACKEND_IMAGE:$env:COMMIT_ID"
 
       - name: Build & Push Frontend Image
+        shell: powershell
         run: |
-          docker build -t $FRONTEND_IMAGE:$COMMIT_ID -f docker/Dockerfile.frontend .
-          docker push $FRONTEND_IMAGE:$COMMIT_ID
+          docker build -t "$env:FRONTEND_IMAGE:$env:COMMIT_ID" -f docker/Dockerfile.frontend .
+          docker push "$env:FRONTEND_IMAGE:$env:COMMIT_ID"
 
       - name: Update values.yaml with new tag
+        shell: powershell
         run: |
-          sed -i "s/tag: .*/tag: $COMMIT_ID/" $CHART_PATH/values.yaml
+          (Get-Content "$env:CHART_PATH\values.yaml") -replace 'tag: .*', "tag: $env:COMMIT_ID" | Set-Content "$env:CHART_PATH\values.yaml"
 
       - name: Commit updated values.yaml
         uses: EndBug/add-and-commit@v9
         with:
-          message: "chore: update image tag to $COMMIT_ID"
+          message: "chore: update image tag to ${{ env.COMMIT_ID }}"
           add: "${{ env.CHART_PATH }}/values.yaml"
 
       - name: Install ArgoCD CLI
