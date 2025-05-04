@@ -57,10 +57,12 @@ jobs:
       - name: Commit updated values.yaml
         uses: EndBug/add-and-commit@v9
         with:
-          message: "chore: update image tag"
+          message: "chore: update image tag to ${{ env.COMMIT_ID }}"
           add: "${{ env.CHART_PATH }}/values.yaml"
           push: true
-          github_token: ${{ secrets.TOKEN_GITHUB }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+
 
       - name: Install ArgoCD CLI
         run: |
