@@ -1,15 +1,46 @@
 backend:
   image:
     repository: noor2205/paytrack-backend
-    tag: latest
+    tag: f66f4bb
 
 frontend:
   image:
     repository: noor2205/paytrack-frontend
-    tag: latest
+    tag: f66f4bb
 
 mysql:
   image: mysql:8.3
   rootPassword: 22639646410Aa
   database: PayTrackDB
   user: root
+
+# ingress:
+#   enabled: true
+#   host: paytrack-helm.local
+
+#   backendPaths:
+#     - path: /employees
+#     - path: /hrs
+#     - path: /admins
+#     - path: /managers
+#     - path: /users
+#     - path: /leaves
+#     - path: /department
+ingress:
+  enabled: true
+
+  # must be a list of host entries
+  hosts:
+    - host: paytrack-helm.local
+      paths:
+        - path: /employees
+        - path: /hrs
+        - path: /admins
+        - path: /managers
+        - path: /users
+        - path: /leaves
+        - path: /department
+
+  # optional: annotations, tls if you need it
+  annotations: {}
+  tls: []

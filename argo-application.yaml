@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: paytrack
+  namespace: argocd
+spec:
+  destination:
+    namespace: paytrack-helm
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/NNoorFatima/paytrack-devops.git
+    targetRevision: HEAD
+    path: charts/paytrack
+    helm:
+      valueFiles:
+        - values.yaml
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

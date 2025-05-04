@@ -4,5 +4,5 @@ metadata:
   name: paytrack-configmap
   namespace: {{ .Release.Namespace }}
 data:
-  DB_URL: jdbc:mysql://mysql:3306/{{ .Values.mysql.database }}
+  DB_URL: jdbc:mysql://mysql.{{ .Release.Namespace }}.svc.cluster.local:3306/{{ .Values.mysql.database }}
   DB_USER: {{ .Values.mysql.user }}
