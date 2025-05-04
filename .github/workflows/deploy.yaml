@@ -1,3 +1,4 @@
+# .github/workflows/paytrack-ci-cd.yaml
 name: PayTrack CI/CD
 
 on:
@@ -21,14 +22,16 @@ jobs:
       CHART_PATH: charts/paytrack
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0       # needed so we can push changes back
 
-      - name: Get Short Commit ID (PowerShell-safe)
+      - name: Get short commit ID
         shell: powershell
         run: |
-          $shortCommit = $env:GITHUB_SHA.Substring(0,7)
-          Add-Content -Path $env:GITHUB_ENV -Value "COMMIT_ID=$shortCommit"
+          $shortCommit = $Env:GITHUB_SHA.Substring(0,7)
+          Add-Content -Path $Env:GITHUB_ENV -Value "COMMIT_ID=$shortCommit"
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -42,7 +45,6 @@ jobs:
           docker build -t "${env:BACKEND_IMAGE}:${env:COMMIT_ID}" -f docker/Dockerfile.backend .
           docker push "${env:BACKEND_IMAGE}:${env:COMMIT_ID}"
 
-
       - name: Build & Push Frontend Image
         shell: powershell
         run: |
@@ -52,7 +54,8 @@ jobs:
       - name: Update values.yaml with new tag
         shell: powershell
         run: |
-          (Get-Content "$env:CHART_PATH\values.yaml") -replace 'tag: .*', "tag: $env:COMMIT_ID" | Set-Content "$env:CHART_PATH\values.yaml"
+          (Get-Content "$env:CHART_PATH\values.yaml") -replace 'tag: .*', "tag: $env:COMMIT_ID" `
+            | Set-Content "$env:CHART_PATH\values.yaml"
 
       - name: Commit updated values.yaml
         uses: EndBug/add-and-commit@v9
@@ -60,9 +63,7 @@ jobs:
           message: "chore: update image tag to ${{ env.COMMIT_ID }}"
           add: "${{ env.CHART_PATH }}/values.yaml"
           push: true
-          token: ${{ secrets.TOKEN_GITHUB }}  #  This is key!
-
-
+          github_token: ${{ secrets.TOKEN_GITHUB }}
 
       - name: Install ArgoCD CLI
         run: |
@@ -71,5 +72,9 @@ jobs:
 
       - name: Trigger ArgoCD Sync
         run: |
-          argocd login paytrack-helm.local --insecure --username admin --password ${{ secrets.ARGOCD_PASSWORD }} --grpc-web
+          argocd login paytrack-helm.local \
+            --insecure \
+            --username admin \
+            --password ${{ secrets.ARGOCD_PASSWORD }} \
+            --grpc-web
           argocd app sync paytrack --prune
