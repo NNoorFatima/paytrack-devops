@@ -89,13 +89,17 @@ jobs:
       - name: Trigger ArgoCD Sync
         shell: powershell
         run: |
-          # Login
-          & 'D:\argocd\argocd.exe' login paytrack-helm.local `
-            --insecure `
+          # 1) Login over grpc-web, plaintext HTTP
+          & 'D:\argocd\argocd.exe' login `
+            --server paytrack-helm.local `
             --username admin `
             --password ${{ secrets.ARGOCD_PASSWORD }} `
+            --grpc-web `
+            --plaintext
+
+          # 2) Sync the app
+          & 'D:\argocd\argocd.exe' app sync paytrack `
+            --server paytrack-helm.local `
             --grpc-web
 
-          # Sync the app
-          & 'D:\argocd\argocd.exe' app sync paytrack --prune
 
