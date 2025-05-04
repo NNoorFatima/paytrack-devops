@@ -39,14 +39,15 @@ jobs:
       - name: Build & Push Backend Image
         shell: powershell
         run: |
-          docker build -t "$env:BACKEND_IMAGE:$env:COMMIT_ID" -f docker/Dockerfile.backend .
-          docker push "$env:BACKEND_IMAGE:$env:COMMIT_ID"
+          docker build -t "${env:BACKEND_IMAGE}:${env:COMMIT_ID}" -f docker/Dockerfile.backend .
+          docker push "${env:BACKEND_IMAGE}:${env:COMMIT_ID}"
+
 
       - name: Build & Push Frontend Image
         shell: powershell
         run: |
-          docker build -t "$env:FRONTEND_IMAGE:$env:COMMIT_ID" -f docker/Dockerfile.frontend .
-          docker push "$env:FRONTEND_IMAGE:$env:COMMIT_ID"
+          docker build -t "${env:FRONTEND_IMAGE}:${env:COMMIT_ID}" -f docker/Dockerfile.frontend .
+          docker push "${env:FRONTEND_IMAGE}:${env:COMMIT_ID}"
 
       - name: Update values.yaml with new tag
         shell: powershell
@@ -56,7 +57,7 @@ jobs:
       - name: Commit updated values.yaml
         uses: EndBug/add-and-commit@v9
         with:
-          message: "chore: update image tag to ${{ env.COMMIT_ID }}"
+          message: "chore: update image tag"
           add: "${{ env.CHART_PATH }}/values.yaml"
 
       - name: Install ArgoCD CLI
