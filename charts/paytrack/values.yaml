@@ -1,12 +1,12 @@
 backend:
   image:
     repository: noor2205/paytrack-backend
-    tag: 6a7dbac
+    tag: 1696f07
 
 frontend:
   image:
     repository: noor2205/paytrack-frontend
-    tag: 6a7dbac
+    tag: 1696f07
 
 mysql:
   image: mysql:8.3
@@ -14,15 +14,33 @@ mysql:
   database: PayTrackDB
   user: root
 
+# ingress:
+#   enabled: true
+#   host: paytrack-helm.local
+
+#   backendPaths:
+#     - path: /employees
+#     - path: /hrs
+#     - path: /admins
+#     - path: /managers
+#     - path: /users
+#     - path: /leaves
+#     - path: /department
 ingress:
   enabled: true
-  host: paytrack-helm.local
 
-  backendPaths:
-    - path: /employees
-    - path: /hrs
-    - path: /admins
-    - path: /managers
-    - path: /users
-    - path: /leaves
-    - path: /department
+  # must be a list of host entries
+  hosts:
+    - host: paytrack-helm.local
+      paths:
+        - path: /employees
+        - path: /hrs
+        - path: /admins
+        - path: /managers
+        - path: /users
+        - path: /leaves
+        - path: /department
+
+  # optional: annotations, tls if you need it
+  annotations: {}
+  tls: []
