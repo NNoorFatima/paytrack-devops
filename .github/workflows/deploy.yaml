@@ -59,6 +59,8 @@ jobs:
         with:
           message: "chore: update image tag"
           add: "${{ env.CHART_PATH }}/values.yaml"
+          push: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install ArgoCD CLI
         run: |
