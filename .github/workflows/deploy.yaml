@@ -60,8 +60,8 @@ jobs:
           message: "chore: update image tag to ${{ env.COMMIT_ID }}"
           add: "${{ env.CHART_PATH }}/values.yaml"
           push: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+          token: ${{ secrets.TOKEN_GITHUB }}  #  This is key!
+
 
 
       - name: Install ArgoCD CLI
