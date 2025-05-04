@@ -69,11 +69,22 @@ jobs:
           push: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install ArgoCD CLI
+      - name: Install ArgoCD CLI on Windows
+        shell: powershell
         run: |
-          curl -sSL -o argocd \
-            https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-          chmod +x argocd && sudo mv argocd /usr/local/bin/argocd
+          # Download the Windows executable
+          Invoke-WebRequest `
+            -Uri 'https://github.com/argoproj/argo-cd/releases/latest/download/argocd-windows-amd64.exe' `
+            -OutFile 'argocd.exe'
+
+          # Move into D:\argocd and add to PATH
+          $installDir = 'D:\argocd'
+          if (-not (Test-Path $installDir)) {
+            New-Item -ItemType Directory -Path $installDir | Out-Null
+          }
+          Move-Item -Force 'argocd.exe' "$installDir\argocd.exe"
+          [Environment]::SetEnvironmentVariable('PATH', "$Env:PATH;$installDir", 'Process')
+
 
       - name: Trigger ArgoCD Sync
         run: |
