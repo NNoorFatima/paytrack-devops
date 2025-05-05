@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/NNoorFatima/paytrack-devops.git
-    targetRevision: HEAD
+    targetRevision: main
     path: charts/paytrack
     helm:
       valueFiles:
