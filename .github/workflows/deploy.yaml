@@ -97,14 +97,14 @@ jobs:
       - name: Trigger ArgoCD Sync
         shell: powershell
         run: |
-          # 1) Login to ArgoCD running at localhost:8083 (forwarded from svc/argocd-server:443)
+          # 1) Login to ArgoCD (using localhost and port forwarding)
           & 'D:\argocd\argocd.exe' login `
-            --server https://localhost:8083 `
+            --server localhost:8083 `  # Use localhost as both are on the same machine
             --username admin `
             --password "${{ secrets.ARGOCD_PASSWORD }}" `
             --insecure
 
           # 2) Sync the app
           & 'D:\argocd\argocd.exe' app sync paytrack `
-            --server https://localhost:8083 `
+            --server localhost:8083 `  # Same URL as above
             --insecure
