@@ -98,11 +98,11 @@ jobs:
         shell: powershell
         run: |
           # 1) Login to ArgoCD (using localhost and port forwarding)
-          & 'D:\argocd\argocd.exe' login `
-            --server localhost:8083 `  # Use localhost as both are on the same machine
-            --username admin `
-            --password "${{ secrets.ARGOCD_PASSWORD }}" `
-            --insecure
+          & 'D:\argocd\argocd.exe' login --server localhost:8083 --username admin --password "${{ secrets.ARGOCD_PASSWORD }}" --insecure
+  
+          # 2) Sync the app
+          & 'D:\argocd\argocd.exe' app sync paytrack --server localhost:8083 --insecure
+
 
           # 2) Sync the app
           & 'D:\argocd\argocd.exe' app sync paytrack `
