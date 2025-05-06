@@ -102,9 +102,3 @@ jobs:
   
           # 2) Sync the app
           & 'D:\argocd\argocd.exe' app sync paytrack --server localhost:8083 --insecure
-
-
-          # 2) Sync the app
-          & 'D:\argocd\argocd.exe' app sync paytrack `
-            --server localhost:8083 `  # Same URL as above
-            --insecure
