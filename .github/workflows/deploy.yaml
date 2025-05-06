@@ -1,3 +1,7 @@
+# .github/workflows/paytrack-ci-cd.yaml
+permissions:
+  contents: write
+
 name: PayTrack CI/CD
 
 on:
