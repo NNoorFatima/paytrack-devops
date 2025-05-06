@@ -1,7 +1,3 @@
-# .github/workflows/paytrack-ci-cd.yaml
-permissions:
-  contents: write
-
 name: PayTrack CI/CD
 
 on:
@@ -16,9 +12,8 @@ on:
 
 jobs:
   build-and-deploy:
-    name: Build Docker Images & Trigger ArgoCD
+    name: Build Docker Images
     runs-on: self-hosted
-
     env:
       BACKEND_IMAGE: noor2205/paytrack-backend
       FRONTEND_IMAGE: noor2205/paytrack-frontend
@@ -28,7 +23,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0            # so we can push commits back
+          fetch-depth: 0
 
       - name: Get short commit ID
         shell: powershell
@@ -69,6 +64,11 @@ jobs:
           push: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
+  argocd-install:
+    name: Install ArgoCD CLI
+    runs-on: self-hosted
+    needs: build-and-deploy
+    steps:
       - name: Install ArgoCD CLI on Windows
         shell: powershell
         run: |
@@ -85,7 +85,11 @@ jobs:
           Move-Item -Force 'argocd.exe' "$installDir\argocd.exe"
           [Environment]::SetEnvironmentVariable('PATH', "$Env:PATH;$installDir", 'Process')
 
-
+  argocd-sync:
+    name: Trigger ArgoCD Sync
+    runs-on: self-hosted
+    needs: argocd-install
+    steps:
       - name: Trigger ArgoCD Sync
         shell: powershell
         run: |
@@ -100,4 +104,3 @@ jobs:
           & 'D:\argocd\argocd.exe' app sync paytrack `
             --server https://localhost:8083 `
             --insecure
-
