@@ -6,12 +6,10 @@ metadata:
 data:
   paytrackdb_users.sql: |-
 {{ .Files.Get "sql/paytrackdb_users.sql" | indent 4 }}
-  paytrackdb_admin.sql: |-
-{{ .Files.Get "sql/paytrackdb_admin.sql" | indent 4 }}
-  paytrackdb_employee.sql: |-
-{{ .Files.Get "sql/paytrackdb_employee.sql" | indent 4 }}
   paytrackdb_department.sql: |-
 {{ .Files.Get "sql/paytrackdb_department.sql" | indent 4 }}
+  paytrackdb_employee.sql: |-
+{{ .Files.Get "sql/paytrackdb_employee.sql" | indent 4 }}
   paytrackdb_hr.sql: |-
 {{ .Files.Get "sql/paytrackdb_hr.sql" | indent 4 }}
   paytrackdb_leaves.sql: |-
