@@ -1,12 +1,12 @@
 backend:
   image:
     repository: noor2205/paytrack-backend
-    tag: 7da5877
+    tag: fc38847
 
 frontend:
   image:
     repository: noor2205/paytrack-frontend
-    tag: 7da5877
+    tag: fc38847
 mysql:
   image: mysql:8.3
   rootPassword: 22639646410Aa

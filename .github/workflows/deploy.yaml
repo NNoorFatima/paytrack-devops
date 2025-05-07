@@ -97,8 +97,8 @@ jobs:
       - name: Trigger ArgoCD Sync
         shell: powershell
         run: |
-          # 1) Login to ArgoCD (using localhost and port forwarding)
-          & 'D:\argocd\argocd.exe' login --server localhost:8083 --username admin --password "${{ secrets.ARGOCD_PASSWORD }}" --insecure
+          # 1) Login to ArgoCD (using ingress endpoint - replace with your ingress hostname)
+          & 'D:\argocd\argocd.exe' login --server argocd.local --username admin --password "${{ secrets.ARGOCD_PASSWORD }}" --insecure
   
           # 2) Sync the app
-          & 'D:\argocd\argocd.exe' app sync paytrack --server localhost:8083 --insecure
+          & 'D:\argocd\argocd.exe' app sync paytrack --server argocd.local --insecure
