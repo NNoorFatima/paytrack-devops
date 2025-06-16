@@ -24,8 +24,6 @@ public class Admin {
     @JsonIgnore // This will prevent the user field from being serialized
     private User user;
 
-
-
     // @OneToOne(fetch = FetchType.EAGER)
     // @JoinColumn(name = "userid", referencedColumnName = "userid", insertable = false, updatable = false)
     // private User user;
